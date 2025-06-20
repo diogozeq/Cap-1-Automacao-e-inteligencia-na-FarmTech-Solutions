@@ -1,0 +1,1 @@
+# Cap-1-Automacao-e-inteligencia-na-FarmTech-Solutions
