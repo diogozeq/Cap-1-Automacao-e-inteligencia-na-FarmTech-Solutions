@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "author": "Diogo Zequini",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 28.8, "left": 24.04, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnP",
+      "top": -137.8,
+      "left": -220.8,
+      "attrs": { "color": "green", "label": "Fósforo (P)" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnK",
+      "top": -51.4,
+      "left": -220.8,
+      "attrs": { "color": "blue", "label": "Potássio (K)" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dhtUmidade",
+      "top": 365.1,
+      "left": -130.2,
+      "attrs": { "label": "Umidade" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRele",
+      "top": -80.4,
+      "left": 349.4,
+      "attrs": { "color": "red", "label": "Bomba (Relé)" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rLedRele",
+      "top": 282.35,
+      "left": 57.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldrPH",
+      "top": 224,
+      "left": -364,
+      "attrs": { "label": "Sensor pH (LDR)" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rLDR",
+      "top": 311.15,
+      "left": 57.6,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-lcd1602-i2c",
+      "id": "lcd1",
+      "top": -160,
+      "left": 150,
+      "attrs": { "label": "LCD 16x2", "address": "0x27" }
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd2",
+      "top": -310.4,
+      "left": -80.8,
+      "attrs": { "pins": "i2c", "address": "0x26" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btnP:1.r", "esp:GND.1", "green", [ "v0" ] ],
+    [ "btnP:2.r", "esp:23", "green", [ "h0" ] ],
+    [ "btnK:1.r", "esp:GND.1", "blue", [ "v0" ] ],
+    [ "btnK:2.r", "esp:26", "blue", [ "h0" ] ],
+    [ "dhtUmidade:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dhtUmidade:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "dhtUmidade:SDA", "esp:19", "purple", [ "h0" ] ],
+    [ "ledRele:A", "esp:25", "red", [ "v0" ] ],
+    [ "ledRele:C", "rLedRele:1", "red", [ "h-28.8", "v-28.8" ] ],
+    [ "rLedRele:2", "esp:GND.1", "black", [ "h0" ] ],
+    [ "ldrPH:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "ldrPH:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "ldrPH:AO", "esp:35", "orange", [ "h0" ] ],
+    [ "rLDR:1", "ldrPH:AO", "orange", [ "v-28.8", "h-48.2" ] ],
+    [ "rLDR:2", "esp:GND.2", "black", [ "h0" ] ],
+    [ "lcd1:SDA", "esp:21", "purple", [ "h0" ] ],
+    [ "lcd1:SCL", "esp:22", "purple", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "lcd2:SDA", "esp:21", "purple", [ "h0" ] ],
+    [ "lcd2:SCL", "esp:22", "purple", [ "h0" ] ],
+    [ "lcd2:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "lcd2:GND", "esp:GND.1", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

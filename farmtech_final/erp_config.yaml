@@ -1,0 +1,49 @@
+# FarmTech ERP Configuration
+# Configuração simplificada para o sistema ERP
+
+db_name: "backend/data/farmtech.db"
+table_name: "leituras_sensores_phd_v2"
+
+# Parâmetros da lógica de irrigação ESP32
+logica_esp32:
+  UMIDADE_CRITICA_BAIXA: 15.0
+  UMIDADE_MINIMA_PARA_IRRIGAR: 20.0
+  UMIDADE_ALTA_PARAR_IRRIGACAO: 60.0
+  PH_IDEAL_MINIMO: 5.5
+  PH_IDEAL_MAXIMO: 6.5
+  PH_CRITICO_MINIMO: 4.5
+  PH_CRITICO_MAXIMO: 7.5
+
+# Configurações de forecast
+forecast_settings:
+  num_leituras_futuras: 6
+  intervalo_leitura_minutos: 5
+  alerta_forecast_ativo: true
+  arima_p: 1
+  arima_d: 1
+  arima_q: 1
+
+# Configurações de custo
+custo_settings:
+  custo_agua_reais_por_m3: 5.00
+  vazao_bomba_litros_por_hora: 1000.0
+  tempo_irrigacao_padrao_minutos: 15.0
+  custo_energia_kwh: 0.75
+  potencia_bomba_kw: 0.75
+
+# Configurações de Machine Learning
+ml_classifier:
+  test_size: 0.3
+  random_state: 42
+  n_estimators: 100
+  min_samples_leaf: 3
+
+# Configurações de relatório
+report_settings:
+  max_anomalias_no_relatorio: 5
+  max_leituras_recentes_tabela_pdf: 15
+  autor_relatorio: "FarmTech ERP System"
+
+# Configurações da CLI (legacy)
+cli_settings:
+  max_leituras_tabela_console: 10

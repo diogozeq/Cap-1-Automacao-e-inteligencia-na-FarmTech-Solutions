@@ -1,0 +1,9 @@
+@echo off
+echo Iniciando FarmTech ERP...
+echo.
+echo Instalando dependencias...
+pip install -r requirements.txt
+echo.
+echo Iniciando aplicacao...
+streamlit run app.py
+pause
